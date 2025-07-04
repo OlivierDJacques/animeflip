@@ -1,4 +1,4 @@
-AnimeFlip Guessing Game
+#AnimeFlip Guessing Game
 
 AnimeFlip is an interactive web game where users guess the names of popular anime from blurred cover images. It features a responsive design that works on both desktop and mobile devices.
 
