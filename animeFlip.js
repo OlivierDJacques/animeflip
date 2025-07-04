@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Use .shift() to get the header row and remove it from the lines array
       const headers = lines.shift().split(','); 
-      const nameIndex = headers.indexOf('Name');
+      const nameIndex = headers.indexOf('title');
 
       if (nameIndex === -1) {
         console.error("'Name' column not found in CSV header.");
@@ -18,27 +18,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       // 1. Collect all anime names into an array first
-      const animeNames = [];
-      for (const line of lines) {
+      const animeNames = new Set();
+      lines.forEach(line => {
         const columns = line.split(',');
         const animeName = columns[nameIndex];
-
         if (animeName) {
-          // Add the cleaned name to the array
-          animeNames.push(animeName.trim().replace(/^"|"$/g, ''));
+          animeNames.add(animeName.trim().replace(/^"|"$/g, ''));
         }
-      }
+      });
 
-      // 2. Use a Set to get unique names, then convert to an array and sort it
-      const uniqueSortedNames = [...new Set(animeNames)].sort();
+      const sortedNames = [...animeNames].sort();
 
       // 3. Populate the datalist from the sorted array
-      datalist.innerHTML = ''; // Clear any previous options
-      for (const name of uniqueSortedNames) {
+      datalist.innerHTML = '';
+      sortedNames.forEach(name => {
         const option = document.createElement('option');
         option.value = name;
         datalist.appendChild(option);
-      }
+      });
 
     } catch (error) {
       console.error('Error loading or parsing anime data:', error);
