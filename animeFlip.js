@@ -6,7 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const textData= await response.text();
       const datalist = document.getElementById('anime-list');
 
-      const animeNames = textData.trim().split('\n').filter(name => name.length > 0);
+      const lines = textData.trim().split('\n');
+
+      const animeNames = lines
+        .filter(line => line.length > 0)
+        .map(line => {
+        // Find the last comma in the line
+          const lastCommaIndex = line.lastIndexOf(',');
+
+        // If a comma is found, take the text before it; otherwise, use the whole line
+          return lastCommaIndex !== -1 ? line.substring(0, lastCommaIndex).trim() : line.trim();
+        });
+
       const sortedNames = animeNames.sort();
 
       datalist.innerHTML = '';
