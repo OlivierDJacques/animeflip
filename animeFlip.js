@@ -3,13 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   async function populateAnimeDatalist() {
     try {
       const response = await fetch('anime_titles_nodupes.txt');
-      const csvText = await response.text();
+      const textData= await response.text();
       const datalist = document.getElementById('anime-list');
 
       const animeNames = textData.trim().split('\n').filter(name => name.length > 0);
       const sortedNames = animeNames.sort();
-
-      const lines = csvText.trim().split('\n');
 
       datalist.innerHTML = '';
       sortedNames.forEach(name => {
@@ -18,13 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
         datalist.appendChild(option);
       });
 
-    console.log(`Successfully populated datalist with ${sortedNames.length} titles from .txt file.`);
+      console.log(`Successfully populated datalist with ${sortedNames.length} titles from .txt file.`);
 
-  } catch (error) {
-    console.error('Error loading or parsing data:', error);
-  }
+    } catch (error) {
+      console.error('Error loading or parsing data:', error);
+    }
   
-}
+  }
   // Call the function to load the data when the page is ready
   populateAnimeDatalist();
 
