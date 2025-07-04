@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function populateAnimeDatalist() {
     try {
-      const response = await fetch('2024-anime.csv');
+      const response = await fetch('mal_top2000_anime.csv');
       const csvText = await response.text();
       const datalist = document.getElementById('anime-list');
 
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Use .shift() to get the header row and remove it from the lines array
       const headers = lines.shift().split(','); 
-      const nameIndex = headers.indexOf('title');
+      const nameIndex = headers.indexOf('Name');
 
       if (nameIndex === -1) {
         console.error("'Name' column not found in CSV header.");
@@ -18,24 +18,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       // 1. Collect all anime names into an array first
-      const animeNames = new Set();
-      lines.forEach(line => {
+      const animeNames = [];
+      for (const line of lines) {
         const columns = line.split(',');
         const animeName = columns[nameIndex];
-        if (animeName) {
-          animeNames.add(animeName.trim().replace(/^"|"$/g, ''));
-        }
-      });
 
-      const sortedNames = [...animeNames].sort();
+        if (animeName) {
+          // Add the cleaned name to the array
+          animeNames.push(animeName.trim().replace(/^"|"$/g, ''));
+        }
+      }
+
+      // 2. Use a Set to get unique names, then convert to an array and sort it
+      const uniqueSortedNames = [...new Set(animeNames)].sort();
 
       // 3. Populate the datalist from the sorted array
-      datalist.innerHTML = '';
-      sortedNames.forEach(name => {
+      datalist.innerHTML = ''; // Clear any previous options
+      for (const name of uniqueSortedNames) {
         const option = document.createElement('option');
         option.value = name;
         datalist.appendChild(option);
-      });
+      }
 
     } catch (error) {
       console.error('Error loading or parsing anime data:', error);
