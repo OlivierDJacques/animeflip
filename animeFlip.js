@@ -51,15 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const images = [
-    'naruto.jpg',
-    'onepiece.jpg',
-    'aot.jpg',
-    'bleach.jpg',
-    'demonslayer.jpg',
-    'jjk.jpg',
-    'mha.jpg',
-    'fma.jpg',
-    'tokyoghoul.jpg'
+    'Naruto-shippuden.jpg',
+    'Solo-Leveling.jpg',
+    'death-note.jpg',
+    'Mashle.jpg',
+    'Dan-Da-Dan.jpg',
+    'Haikyuu.jpg',
+    'Kaiju-No-8.jpg',
+    'Dragon-ball-daima.png',
+    'Blue-box.jpg'
   ];
 
   const tiles = document.querySelectorAll('.tile');
