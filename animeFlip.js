@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function populateAnimeDatalist() {
     try {
-      const response = await fetch('anime export 2025-07-04 05-28-28.csv');
+      const response = await fetch('2024-anime.csv');
       const csvText = await response.text();
       const datalist = document.getElementById('anime-list');
 
@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Use .shift() to get the header row and remove it from the lines array
       const headers = lines.shift().split(','); 
-      const nameIndex = headers.indexOf('Title');
+      const nameIndex = headers.indexOf('Name');
 
       if (nameIndex === -1) {
-        console.error("'Title' column not found in CSV header.");
+        console.error("'Name' column not found in CSV header.");
         return;
       }
       
