@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const images = [
-    'naruto-shippuden.jpg',
-    'solo-leveling.jpg',
+    'Naruto-shippuden.jpg',
+    'Solo-Leveling.jpg',
     'death-note.jpg',
     'Mashle.jpg',
     'Dan-Da-Dan.jpg',
