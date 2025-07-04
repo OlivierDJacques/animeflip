@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function populateAnimeDatalist() {
     try {
-      const response = await fetch('mal_top2000_anime.csv');
+      const response = await fetch('anime export 2025-07-04 05-28-28.csv');
       const csvText = await response.text();
       const datalist = document.getElementById('anime-list');
 
@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Use .shift() to get the header row and remove it from the lines array
       const headers = lines.shift().split(','); 
-      const nameIndex = headers.indexOf('Name');
+      const nameIndex = headers.indexOf('Title');
 
       if (nameIndex === -1) {
-        console.error("'Name' column not found in CSV header.");
+        console.error("'Title' column not found in CSV header.");
         return;
       }
       
@@ -51,15 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const images = [
-    'naruto.jpg',
-    'onepiece.jpg',
-    'aot.jpg',
-    'bleach.jpg',
-    'demonslayer.jpg',
-    'jjk.jpg',
-    'mha.jpg',
-    'fma.jpg',
-    'tokyoghoul.jpg'
+    'naruto-shippuden.jpg',
+    'solo-leveling.jpg',
+    'death-note.jpg',
+    'Mashle.jpg',
+    'Dan-Da-Dan.jpg',
+    'Haikyuu.jpg',
+    'Kaiju-No-8.jpg',
+    'Dragon-ball-daima.png',
+    'Blue-box.jpg'
   ];
 
   const tiles = document.querySelectorAll('.tile');
