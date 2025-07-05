@@ -2,49 +2,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function populateAnimeDatalist() {
     try {
-      const response = await fetch('mal_top2000_anime.csv');
-      const csvText = await response.text();
+      const response = await fetch('anime_titles_nodupes.txt');
+      const textData= await response.text();
       const datalist = document.getElementById('anime-list');
 
-      const lines = csvText.trim().split('\n');
-      
-      // Use .shift() to get the header row and remove it from the lines array
-      const headers = lines.shift().split(','); 
-      const nameIndex = headers.indexOf('Name');
+      const lines = textData.trim().split('\n');
 
-      if (nameIndex === -1) {
-        console.error("'Name' column not found in CSV header.");
-        return;
-      }
-      
-      // 1. Collect all anime names into an array first
-      const animeNames = [];
-      for (const line of lines) {
-        const columns = line.split(',');
-        const animeName = columns[nameIndex];
+      const animeNames = lines
+        .filter(line => line.length > 0)
+        .map(line => {
+        // Find the last comma in the line
+          const lastCommaIndex = line.lastIndexOf(',');
 
-        if (animeName) {
-          // Add the cleaned name to the array
-          animeNames.push(animeName.trim().replace(/^"|"$/g, ''));
-        }
-      }
+        // If a comma is found, take the text before it; otherwise, use the whole line
+          return lastCommaIndex !== -1 ? line.substring(0, lastCommaIndex).trim() : line.trim();
+        });
 
-      // 2. Use a Set to get unique names, then convert to an array and sort it
-      const uniqueSortedNames = [...new Set(animeNames)].sort();
+      const sortedNames = animeNames.sort();
 
-      // 3. Populate the datalist from the sorted array
-      datalist.innerHTML = ''; // Clear any previous options
-      for (const name of uniqueSortedNames) {
+      datalist.innerHTML = '';
+      sortedNames.forEach(name => {
         const option = document.createElement('option');
         option.value = name;
         datalist.appendChild(option);
-      }
+      });
+
+      console.log(`Successfully populated datalist with ${sortedNames.length} titles from .txt file.`);
 
     } catch (error) {
-      console.error('Error loading or parsing anime data:', error);
+      console.error('Error loading or parsing data:', error);
     }
+  
   }
-
   // Call the function to load the data when the page is ready
   populateAnimeDatalist();
 
