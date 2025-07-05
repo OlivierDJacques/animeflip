@@ -141,10 +141,10 @@ body {
   font-weight: bold;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 37rem) {
 
   .home-button img {
-    width: 200px; /* Reduces the logo image width */
+    width: 12rem; /* Reduces the logo image width */
   }
 
   /* Make the main grid a single column */
