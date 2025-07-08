@@ -5,8 +5,7 @@
  */
 function handleCORS(req, res) {
     const allowedOrigins = [
-    'http://127.0.0.1:5500',
-    'http://localhost:8000'
+    'https://animeflip.vercel.app'
     ];
 
     const origin = req.headers.origin;  
