@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   async function populateAnimeDatalist() {
     try {
-      const response = await fetch('https://animegrid-backend.vercel.app/api/top500');
+      const response = await fetch('https://animeflip.vercel.app/api/top500');
       const topAnimeList = await response.json();
       const datalist = document.getElementById('anime-list');
       
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Call the function to load the data when the page is ready
   populateAnimeDatalist();
 
-  const response = await fetch('https://animegrid-backend.vercel.app/api/daily');
+  const response = await fetch('https://animeflip.vercel.app/api/daily');
   const dailyAnime = await response.json();
   const images = dailyAnime.map(anime => anime?.main_picture?.large);
 
