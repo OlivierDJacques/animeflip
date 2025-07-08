@@ -7,7 +7,6 @@ const { writeCache } = require('./cache.js');
  * @returns {Array} - Array of 500 anime objects
  */
 async function generateTop500Anime() {
-    console.log('MAL_ACCESS_TOKEN:', process.env.MAL_ACCESS_TOKEN);
     const response = await axios.get('https://api.myanimelist.net/v2/anime/ranking', {
         headers: {Authorization: `Bearer ${process.env.MAL_ACCESS_TOKEN}`}, // Access token
         // Fetch parameters
