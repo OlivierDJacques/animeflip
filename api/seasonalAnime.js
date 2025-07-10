@@ -8,7 +8,7 @@ const { handleCORS } = require('./handleCORS.js');
  */
 async function seasonalAnime() {
     const response = await axios.get('https://api.myanimelist.net/v2/anime/ranking', {
-        headers: {Authorization: `Bearer: ${process.env.MAL_ACCESS_TOKEN}`},
+        headers: {Authorization: `Bearer ${process.env.MAL_ACCESS_TOKEN}`},
         params: {
             ranking_type: 'airing',
             fields: 'id,title,main_picture,rank,popularity'
@@ -32,7 +32,8 @@ async function handler(req, res) {
   }
 
   try {
-    res.status(200).json(seasonalAnime());
+    seasonalAnime = await seasonalAnime();
+    res.status(200).json(seasonalAnime);
   } 
   catch (err) {
     console.error('/api/seasonalAnime error:', err);
