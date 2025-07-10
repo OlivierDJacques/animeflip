@@ -17,7 +17,7 @@ async function generateTop500Anime() {
         }
     });
     // Parses the anime data, fills topAnimeList, and stores it in the cache 
-    topAnimeList = response.data.data.map(a => a.node);
+    topAnimeList = response.data.data.map(anime => anime.node);
     await writeCache(topAnimeList);
     return topAnimeList;
 }
