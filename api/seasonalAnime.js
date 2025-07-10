@@ -3,7 +3,7 @@ const axios = require('axios'); // Imports axios to make outgoing requests to th
 const { handleCORS } = require('./handleCORS.js');  
 
 /** --- Function ---
- * Creates and sends top 500 anime as an array of anime objects
+ * Creates and sends airing anime as an array of anime objects
  * @returns {Array} - Array of the seasonal anime objects
  */
 async function seasonalAnime() {
@@ -32,8 +32,8 @@ async function handler(req, res) {
   }
 
   try {
-    const seasonalAnime = await seasonalAnime();
-    res.status(200).json(seasonalAnime);
+    const airingAnime = await seasonalAnime();
+    res.status(200).json(airingAnime);
   } 
   catch (err) {
     console.error('/api/seasonalAnime error:', err);
