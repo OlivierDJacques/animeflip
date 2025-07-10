@@ -11,6 +11,7 @@ async function seasonalAnime() {
         headers: {Authorization: `Bearer ${process.env.MAL_ACCESS_TOKEN}`},
         params: {
             ranking_type: 'airing',
+            limit: 100,
             fields: 'id,title,main_picture,rank,popularity'
         }
     });
