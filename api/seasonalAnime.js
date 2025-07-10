@@ -10,8 +10,8 @@ async function seasonalAnime() {
     const response = await axios.get('https://api.myanimelist.net/v2/anime/ranking', {
         headers: {Authorization: `Bearer: ${process.env.MAL_ACCESS_TOKEN}`},
         params: {
-            ranking_type: "airing",
-            fields: "main_picture"
+            ranking_type: 'airing',
+            fields: 'id,title,main_picture,rank,popularity'
         }
     });
     const seasonalAnime = response.data.data.map(anime => anime.node);
