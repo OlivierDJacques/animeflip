@@ -32,7 +32,7 @@ async function handler(req, res) {
   }
 
   try {
-    seasonalAnime = await seasonalAnime();
+    const seasonalAnime = await seasonalAnime();
     res.status(200).json(seasonalAnime);
   } 
   catch (err) {
