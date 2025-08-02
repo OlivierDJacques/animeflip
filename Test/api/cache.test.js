@@ -1,8 +1,9 @@
-import { CACHE_TIME, CACHE_FILE, readCache, writeCache } from '../../src/api/cache';
+import { CACHE_TIME, CACHE_FILE, readCache, writeCache } from '../../api/cache';
 
 jest.mock('fs/promises', () => ({
   stat: jest.fn(),
   readFile: jest.fn(),
+  writeFile: jest.fn()
 }));
 
 const fs = require('fs/promises');
@@ -12,6 +13,7 @@ describe('readCache', () => {
   beforeEach(() => {
     fs.stat.mockReset();
     fs.readFile.mockReset();
+    fs.writeFile.mockReset();
   });
 
   test('Should return parsed data if cache is fresh', async () => {
@@ -71,5 +73,16 @@ describe('readCache', () => {
 
 
     expect(result).toBeNull();
+  });
+
+  test ('Should write a file if it exists and is not stale', async () => {
+    const mockData = [{ id: 1, name: 'item1' }];
+    const mockResult = {
+      topAnimeList: [{ id: 1, name: 'item1' }], 
+      timestamp: Math.floor(Date.now() / 1000)};
+
+    await writeCache(mockData);
+
+    expect(fs.writeFile).toHaveBeenCalledWith(CACHE_FILE, JSON.stringify(mockResult), 'utf8');
   });
 });

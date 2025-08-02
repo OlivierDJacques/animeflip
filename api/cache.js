@@ -38,4 +38,4 @@ async function writeCache(topAnimeList) {
   await fs.writeFile(CACHE_FILE, JSON.stringify(data), 'utf8');  // Stores the newly created array into the cache file
 }
 
-module.exports = { readCache, writeCache, CACHE_TIME };
+module.exports = { readCache, writeCache, CACHE_TIME, CACHE_FILE };
