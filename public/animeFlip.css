@@ -246,3 +246,15 @@ body {
     -1px  1px 0 #000,
     -1px  0   0 #000;
 }
+
+.button-container {
+  text-align: center;
+}
+
+#giveUp {
+  padding: 10px 20px;
+  font-size: 15px;
+
+  position: relative;
+  transform: translateX(-20px);
+}

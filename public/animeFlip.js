@@ -152,4 +152,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         modal.classList.add('hidden');
     }
   });
+
+  // Give up button //
+  const giveUpBtn = document.getElementById('giveUp');
+
+  giveUpBtn.addEventListener('click', () => {
+    // Wait a moment before starting the final animation sequence
+    setTimeout(() => {
+      // Loop through all tiles and apply the animation class with a delay
+      tiles.forEach((tile, index) => {
+        setTimeout(() => {
+          tile.classList.add('flip');
+          setTimeout(() => {
+            tile.classList.add('revealed');
+          }, 700);
+        }, index * 120); // Stagger each tile's animation start
+      });
+    }, 800); // 800ms delay to let the user see the last correct answer
+  });
 });
