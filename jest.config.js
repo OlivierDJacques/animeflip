@@ -6,15 +6,16 @@ module.exports = {
       "!**/vendor/**", 
       "!**/coverage/**", 
       "!jest.config.js",
-      "!**/test-*.js"
+      "!**/test-*.js",
+      "!babel.config.js"
     ],
 
     coverageThreshold: {
       global: {
-        branches: 2,
-        functions: 2,
-        lines: 2,
-        statements: 2,
+        branches: 20,
+        functions: 20,
+        lines: 20,
+        statements: 20,
       },
     },
 
