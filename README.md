@@ -25,10 +25,3 @@ Open the project folder in Visual Studio Code.
 Install the "Live Server" extension from the Extensions marketplace.
 
 Right-click on animeFlip.html in the file explorer and select "Open with Live Server".
-
-Customization
-To change or add answers: In animeFlip.html, edit the data-answer attribute for any tile. You can add multiple correct answers by separating them with a pipe | symbol.
-
-Example: data-answer="Attack on Titan|aot"
-
-To change images: Place your image files in the /images folder. The JavaScript is currently set up to find images based on the anime's name (e.g., an answer of "Naruto" corresponds to naruto.jpg).

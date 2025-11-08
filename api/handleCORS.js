@@ -15,6 +15,9 @@ function handleCORS(req, res) {
         res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');   // Limits request to GET and OPTIONS  
         res.setHeader('Vary', 'Origin');    // Seperate responses for different origins  
     }
+    else {
+        console.warn(`CORS request from disallowed origin: ${origin}`);
+    }
 }
 
 module.exports = { handleCORS };
