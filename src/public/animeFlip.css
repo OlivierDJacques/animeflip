@@ -212,28 +212,28 @@ body {
     padding: 8px 10px; /* Reduce padding to make them less tall */
   }
 
+  .quick-links {
+      display: inline-block;
+      flex-direction: column;
+
+  }
+
+  .quick-buttons {
+      background: none;
+      border: none;
+      padding: 0;
+      transition: 0.15s;
+      vertical-align: top;
+      cursor: pointer;
+  }
+
+  .quick-buttons img {
+      width: 100px;
+      height: auto;
+  }
+
 }
 /*-------end of media-------*/
-  .quick-links {
-    display: inline-block;
-    flex-direction: column;
-
-}
-
-.quick-buttons {
-    background: none;
-    border: none;
-    padding: 0;
-    transition: 0.15s;
-    vertical-align: top;
-    cursor: pointer;
-}
-
-.quick-buttons img {
-    width: 100px;
-    height: auto;
-}
-
 .outlined {
   color: white;
   text-shadow:
